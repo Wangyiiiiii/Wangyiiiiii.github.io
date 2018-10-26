@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="1,2,3,">
+  <meta name="keywords" content="others,">
 
 
 
@@ -77,18 +77,20 @@
 
 
 
-<meta name="description" content="hello world">
-<meta name="keywords" content="1,2,3">
+<meta name="description" content="环境搭建运行Hexo需要有nodejs和git，Ubuntu下安装指令如下 nodejs先直接用apt安装源中的nodejs sudo apt-get install nodejs  sudo apt install nodejs-legacy  sudo apt install npm 然后安装版本更新工具 sudo npm install n -g 更新版本` sudo n stable gi">
+<meta name="keywords" content="others">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test1">
-<meta property="og:url" content="http://yoursite.com/2018/10/24/test1/index.html">
+<meta property="og:title" content="Ubuntu16.04下Hexo+github搭建博客历程">
+<meta property="og:url" content="http://yoursite.com/2018/10/26/setup-blog/index.html">
 <meta property="og:site_name" content="Wangyi&#39;s Blogs">
-<meta property="og:description" content="hello world">
+<meta property="og:description" content="环境搭建运行Hexo需要有nodejs和git，Ubuntu下安装指令如下 nodejs先直接用apt安装源中的nodejs sudo apt-get install nodejs  sudo apt install nodejs-legacy  sudo apt install npm 然后安装版本更新工具 sudo npm install n -g 更新版本` sudo n stable gi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-24T08:15:24.454Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Wangyiiiiii/CS107/master/Assignment1/assn-1-rsg-data/Screenshot%20from%202018-10-26%2009-31-21.png">
+<meta property="og:updated_time" content="2018-10-26T03:55:45.897Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test1">
-<meta name="twitter:description" content="hello world">
+<meta name="twitter:title" content="Ubuntu16.04下Hexo+github搭建博客历程">
+<meta name="twitter:description" content="环境搭建运行Hexo需要有nodejs和git，Ubuntu下安装指令如下 nodejs先直接用apt安装源中的nodejs sudo apt-get install nodejs  sudo apt install nodejs-legacy  sudo apt install npm 然后安装版本更新工具 sudo npm install n -g 更新版本` sudo n stable gi">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Wangyiiiiii/CS107/master/Assignment1/assn-1-rsg-data/Screenshot%20from%202018-10-26%2009-31-21.png">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/24/test1/">
+  <link rel="canonical" href="http://yoursite.com/2018/10/26/setup-blog/">
 
 
 
 
 
-  <title>test1 | Wangyi's Blogs</title>
+  <title>Ubuntu16.04下Hexo+github搭建博客历程 | Wangyi's Blogs</title>
   
 
 
@@ -257,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/test1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/26/setup-blog/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wangyi">
@@ -274,7 +276,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test1</h1>
+          <h1 class="post-title" itemprop="name headline">Ubuntu16.04下Hexo+github搭建博客历程</h1>
         
 
         <div class="post-meta">
@@ -286,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-24T16:14:59+08:00">
-                2018-10-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-26T11:51:19+08:00">
+                2018-10-26
               </time>
             
 
@@ -346,7 +348,61 @@
       
 
       
-        <h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h2>
+        <h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>运行Hexo需要有nodejs和git，Ubuntu下安装指令如下</p>
+<h2 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h2><p>先直接用apt安装源中的nodejs</p>
+<pre><code>sudo apt-get install nodejs 
+sudo apt install nodejs-legacy 
+sudo apt install npm
+</code></pre><p>然后安装版本更新工具</p>
+<pre><code>sudo npm install n -g
+</code></pre><p>更新版本`</p>
+<pre><code>sudo n stable
+</code></pre><h2 id="git"><a href="#git" class="headerlink" title="git"></a>git</h2><p>直接用如下命令安装</p>
+<pre><code>sudo apt-get install git-core
+</code></pre><p> 这两个工具安装好之后用命令 <code>sudo npm install -g hexo-cli</code><br> 就完成所有的环境搭建了</p>
+<h1 id="基本博客搭建"><a href="#基本博客搭建" class="headerlink" title="基本博客搭建"></a>基本博客搭建</h1><h2 id="github端"><a href="#github端" class="headerlink" title="github端"></a>github端</h2><p>首先要在自己github上建立一个repo，repo名有特殊要求，为 账户.github.io 的格式，见下图<br><img src="https://raw.githubusercontent.com/Wangyiiiiii/CS107/master/Assignment1/assn-1-rsg-data/Screenshot%20from%202018-10-26%2009-31-21.png" alt="enter image description here"></p>
+<p>建立好repo之后，在浏览器就可以访问 账户.github.io 这个地址了。</p>
+<h2 id="本地建立博客目录"><a href="#本地建立博客目录" class="headerlink" title="本地建立博客目录"></a>本地建立博客目录</h2><p>在电脑上选个位置建立一个文件夹作为博客的本地位置，cd进入此文件后输入</p>
+<pre><code>hexo init
+</code></pre><p>这样文件夹就会自动产生出初始的博客文件<br>此时需要输入</p>
+<pre><code>npm install
+</code></pre><p>以安装一些需要的组件。</p>
+<h2 id="连接本地文件与github"><a href="#连接本地文件与github" class="headerlink" title="连接本地文件与github"></a>连接本地文件与github</h2><p>首先在终端内设置git的用户名和电子邮箱</p>
+<pre><code>git config --global user.name &quot;yourname&quot;
+git config --global user.email &quot;youremail&quot;
+</code></pre><p>如果之前没有绑定过github的ssh密钥的话，这里还要先绑定，以前做别的github repo已经绑定过了，就不多说了。<br>接下来在博客文件夹下找到_config.yml文件，修改deploy项目</p>
+<pre><code>deploy:
+  type: git
+  repository: git@github.com:Wangyiiiiii/Wangyiiiiii.github.io.git
+  branch: master
+</code></pre><p>_config.yml是博客的主要配置文件，title，author等项目也在这里设置<br>最后使用如下命令来安装一个用以部署项目的扩展：</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre><p>到此，基本的博客框架就搭建完了。几个常用的命令如下:</p>
+<pre><code>hexo new post &quot;blogtitle&quot;
+hexo g
+hexo s
+hexo d
+</code></pre><p>  这几个命令的作用分别是创建名为“blogtitle”(替换成自己的博客标题)的新博客;生成静态页面;部署本地服务器(自己localhost看效果用);部署到github<br>  在部署博客前，必须先生成静态文件。</p>
+<h1 id="进阶设置"><a href="#进阶设置" class="headerlink" title="进阶设置"></a>进阶设置</h1><h2 id="主题变更"><a href="#主题变更" class="headerlink" title="主题变更"></a>主题变更</h2><p>  默认的hexo主题不是很喜欢，我更换成了比较流行的Next主题<br>  首先在博客根目录终端输入以下指令安装主题:</p>
+<pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next
+</code></pre><p>然后进入博客根目录下的_config.yml,把theme对应修改为next即可<br>在目录/themes/next/下也有一个_config.yml文件,很多页面设置比如头像，社交链接等都是在这里设定，可以根据自己的需求来编辑这个文件。</p>
+<h2 id="标签及分类"><a href="#标签及分类" class="headerlink" title="标签及分类"></a>标签及分类</h2><p>在根目录下输入命令:</p>
+<pre><code>hexo new page tags
+</code></pre><p>  然后在/source/tags/下修改index.md文件:</p>
+<pre><code>---
+title: tags
+date: 2018-10-24 16:11:29
+type: &quot;tags&quot;
+---
+</code></pre><p>目录categories的设置也和tags一样，tags改成categories就可以了，这样设置完后，只要在博文中加入tags和categories的信息就ok了，如下:</p>
+<pre><code>---
+title: test2
+date: 2018-10-24 16:15:01
+tags: [2,3,hello]
+categories: code
+---
+    a = b + c
+</code></pre>
       
     </div>
     
@@ -363,11 +419,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/1/" rel="tag"># 1</a>
-          
-            <a href="/tags/2/" rel="tag"># 2</a>
-          
-            <a href="/tags/3/" rel="tag"># 3</a>
+            <a href="/tags/others/" rel="tag"># others</a>
           
         </div>
       
@@ -376,22 +428,6 @@
       
       
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/24/test2/" rel="prev" title="test2">
-                test2 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
 
       
@@ -467,7 +503,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -478,7 +514,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -489,7 +525,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -538,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hello-world"><span class="nav-number">1.</span> <span class="nav-text">hello world</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs"><span class="nav-number">1.1.</span> <span class="nav-text">nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-number">1.2.</span> <span class="nav-text">git</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本博客搭建"><span class="nav-number">2.</span> <span class="nav-text">基本博客搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#github端"><span class="nav-number">2.1.</span> <span class="nav-text">github端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地建立博客目录"><span class="nav-number">2.2.</span> <span class="nav-text">本地建立博客目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接本地文件与github"><span class="nav-number">2.3.</span> <span class="nav-text">连接本地文件与github</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进阶设置"><span class="nav-number">3.</span> <span class="nav-text">进阶设置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主题变更"><span class="nav-number">3.1.</span> <span class="nav-text">主题变更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签及分类"><span class="nav-number">3.2.</span> <span class="nav-text">标签及分类</span></a></li></ol></li></ol></div>
             
 
           </div>
