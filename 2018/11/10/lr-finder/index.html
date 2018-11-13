@@ -85,14 +85,14 @@
 <meta property="og:site_name" content="Wangyi&#39;s Blogs">
 <meta property="og:description" content="learning rate是做深度学习很重要的超参数，它决定了梯度更新每一步的大小。如果我们把梯度更新简化为如下公式:$$  x=x - \varepsilon f’(x)   $$那么learning rate就是ε。如果lr太小，会导致学习速度慢，而如果lr太大则会导致不收敛，loss越来越大。   通常设定lr是根据经验和尝试，从一个较大的lr比如0.1开始，慢慢降低lr直到loss会随着迭">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/Wangyiiiiii/Wangyiiiiii.github.io/master/images/lrsmall.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Wangyiiiiii/Wangyiiiiii.github.io/master/images/lrhigh.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/Wangyiiiiii/Wangyiiiiii.github.io/master/images/lrfinder.png">
-<meta property="og:updated_time" content="2018-11-10T10:03:40.215Z">
+<meta property="og:image" content="https://i.loli.net/2018/11/13/5bea9603b42cb.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/13/5bea960429f9b.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/13/5bea96043dd74.png">
+<meta property="og:updated_time" content="2018-11-13T09:18:24.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="lr_finder">
 <meta name="twitter:description" content="learning rate是做深度学习很重要的超参数，它决定了梯度更新每一步的大小。如果我们把梯度更新简化为如下公式:$$  x=x - \varepsilon f’(x)   $$那么learning rate就是ε。如果lr太小，会导致学习速度慢，而如果lr太大则会导致不收敛，loss越来越大。   通常设定lr是根据经验和尝试，从一个较大的lr比如0.1开始，慢慢降低lr直到loss会随着迭">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Wangyiiiiii/Wangyiiiiii.github.io/master/images/lrsmall.png">
+<meta name="twitter:image" content="https://i.loli.net/2018/11/13/5bea9603b42cb.png">
 
 
 
@@ -351,11 +351,11 @@
 
       
         <p>learning rate是做深度学习很重要的超参数，它决定了梯度更新每一步的大小。如果我们把梯度更新简化为如下公式:<br>$$  x=x - \varepsilon f’(x)   $$<br>那么learning rate就是ε。如果lr太小，会导致学习速度慢，而如果lr太大则会导致不收敛，loss越来越大。</p>
-<center><br><img src="https://raw.githubusercontent.com/Wangyiiiiii/Wangyiiiiii.github.io/master/images/lrsmall.png" width="350" height="300" align="center/"><br></center><br><center><br><img src="https://raw.githubusercontent.com/Wangyiiiiii/Wangyiiiiii.github.io/master/images/lrhigh.png" width="350" height="300" align="center/"><br><br></center>
+<center><br><img src="https://i.loli.net/2018/11/13/5bea9603b42cb.png" width="350" height="300" align="center/"><br></center><br><center><br><img src="https://i.loli.net/2018/11/13/5bea960429f9b.png" width="350" height="300" align="center/"><br><br></center>
 
 <p>通常设定lr是根据经验和尝试，从一个较大的lr比如0.1开始，慢慢降低lr直到loss会随着迭代的进行而下降，这个时候的lr是能够使用的lr的最大值。通常会选取比这个lr小1-2个数量级的数值来作为训练真正使用的lr。<br>这种方法需要训练者手动进行多次尝试，not elegant。在学习fastai在线课程的时候，我了解到一种设定lr的方法。其开发者Jeremy Howard称之为lr finder。</p>
 <p>lrfinder的思路是在每次迭代后稍微的增加lr的值，并且记录下来每个minibatch训练之后lr和loss的关系，用matplotlib等工具绘制出来，找到loss下降最快时对应的的lr作为我们最终选用的lr。以下图为例：</p>
-<center><br><img src="https://raw.githubusercontent.com/Wangyiiiiii/Wangyiiiiii.github.io/master/images/lrfinder.png" width="350" height="300" align="center/"><br><center> loss vs lr </center><br></center>
+<center><br><img src="https://i.loli.net/2018/11/13/5bea96043dd74.png" width="350" height="300" align="center/"><br><center> loss vs lr </center><br></center>
 
 <p>当lr在0.001到0.01之间的时候，loss下降较快，所以我们可以在这个范围内选取一个值来用。这个方法并没有很多人在用，但是它在很多场景都有很好的效果，在训练之前，先跑一遍lrfinder函数，就可以得到一个合适的初始lr。<br>lr_finder在fastai library中已经实现了，文档在这里可以看到。<a href="https://docs.fast.ai/callbacks.lr_finder.html" target="_blank" rel="noopener">lr_finder()</a></p>
 
