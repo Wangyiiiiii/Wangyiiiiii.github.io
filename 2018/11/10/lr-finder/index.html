@@ -80,7 +80,7 @@
 <meta name="description" content="learning rate是做深度学习很重要的超参数，它决定了梯度更新每一步的大小。如果我们把梯度更新简化为如下公式:$$  x=x - \varepsilon f’(x)   $$那么learning rate就是ε。如果lr太小，会导致学习速度慢，而如果lr太大则会导致不收敛，loss越来越大。   通常设定lr是根据经验和尝试，从一个较大的lr比如0.1开始，慢慢降低lr直到loss会随着迭">
 <meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="lr_finder">
+<meta property="og:title" content="lrfinder,一种设置起始learning rate的思路">
 <meta property="og:url" content="http://yoursite.com/2018/11/10/lr-finder/index.html">
 <meta property="og:site_name" content="Wangyi&#39;s Blogs">
 <meta property="og:description" content="learning rate是做深度学习很重要的超参数，它决定了梯度更新每一步的大小。如果我们把梯度更新简化为如下公式:$$  x=x - \varepsilon f’(x)   $$那么learning rate就是ε。如果lr太小，会导致学习速度慢，而如果lr太大则会导致不收敛，loss越来越大。   通常设定lr是根据经验和尝试，从一个较大的lr比如0.1开始，慢慢降低lr直到loss会随着迭">
@@ -88,9 +88,9 @@
 <meta property="og:image" content="https://i.loli.net/2018/11/13/5bea9603b42cb.png">
 <meta property="og:image" content="https://i.loli.net/2018/11/13/5bea960429f9b.png">
 <meta property="og:image" content="https://i.loli.net/2018/11/13/5bea96043dd74.png">
-<meta property="og:updated_time" content="2018-11-13T09:18:24.150Z">
+<meta property="og:updated_time" content="2018-11-30T02:06:32.521Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lr_finder">
+<meta name="twitter:title" content="lrfinder,一种设置起始learning rate的思路">
 <meta name="twitter:description" content="learning rate是做深度学习很重要的超参数，它决定了梯度更新每一步的大小。如果我们把梯度更新简化为如下公式:$$  x=x - \varepsilon f’(x)   $$那么learning rate就是ε。如果lr太小，会导致学习速度慢，而如果lr太大则会导致不收敛，loss越来越大。   通常设定lr是根据经验和尝试，从一个较大的lr比如0.1开始，慢慢降低lr直到loss会随着迭">
 <meta name="twitter:image" content="https://i.loli.net/2018/11/13/5bea9603b42cb.png">
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>lr_finder | Wangyi's Blogs</title>
+  <title>lrfinder,一种设置起始learning rate的思路 | Wangyi's Blogs</title>
   
 
 
@@ -278,7 +278,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">lr_finder</h1>
+          <h1 class="post-title" itemprop="name headline">lrfinder,一种设置起始learning rate的思路</h1>
         
 
         <div class="post-meta">
@@ -398,6 +398,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/11/30/differential-lr/" rel="prev" title="differential learning rate annealing">
+                differential learning rate annealing <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -466,7 +470,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
