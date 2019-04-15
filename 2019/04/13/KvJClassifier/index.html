@@ -77,23 +77,31 @@
 
 
 
-<meta name="description" content="在学习deep learning的过程中，我注意到大多数教程是关于计算机视觉和自然语言处理方面的。确实这些是深度学习取得成功的主要领域，但是很多时候我们想要处理的数据并不是图片，音频或者文本这样的比较简明结构清晰的数据，结构数据(Structured Data)是在现实中更加常见的数据类型，比如说企业的销售数据，保险数据，商店经营数据等。在学习Fastai课程的过程中我了解了一个概念-Embedd">
+<meta name="description" content="学习Fastai的深度学习课程后自己找了些图片数据训练了一个卡比和胖丁的分类器，然后又鼓捣了一下Google App Engine，制作了一个简单的网页APP。 简述做的东西是一个基于网页的图片分类APP，分类对象是卡比和胖丁，下面左边是卡比，右边是胖丁…二者还是很相似的。    整个过程大致分为三步，收集图片，训练模型，部署APP，在这篇博文记录一下整个过程，也会介绍一部分原理。 图片收集先从G">
 <meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="embedding matrix-解决序列型数据问题的重要手段">
-<meta property="og:url" content="http://yoursite.com/2018/12/29/embedding/index.html">
+<meta property="og:title" content="基于fastai和Google App Engine的简单网页图片分类器">
+<meta property="og:url" content="http://yoursite.com/2019/04/13/KvJClassifier/index.html">
 <meta property="og:site_name" content="Wangyi&#39;s Blogs">
-<meta property="og:description" content="在学习deep learning的过程中，我注意到大多数教程是关于计算机视觉和自然语言处理方面的。确实这些是深度学习取得成功的主要领域，但是很多时候我们想要处理的数据并不是图片，音频或者文本这样的比较简明结构清晰的数据，结构数据(Structured Data)是在现实中更加常见的数据类型，比如说企业的销售数据，保险数据，商店经营数据等。在学习Fastai课程的过程中我了解了一个概念-Embedd">
+<meta property="og:description" content="学习Fastai的深度学习课程后自己找了些图片数据训练了一个卡比和胖丁的分类器，然后又鼓捣了一下Google App Engine，制作了一个简单的网页APP。 简述做的东西是一个基于网页的图片分类APP，分类对象是卡比和胖丁，下面左边是卡比，右边是胖丁…二者还是很相似的。    整个过程大致分为三步，收集图片，训练模型，部署APP，在这篇博文记录一下整个过程，也会介绍一部分原理。 图片收集先从G">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="
-https://i.loli.net/2018/12/21/5c1c95601b050.png
+https://i.loli.net/2019/04/13/5cb1913f6f387.jpg
 ">
-<meta property="og:updated_time" content="2018-12-29T07:59:31.822Z">
+<meta property="og:image" content="https://i.loli.net/2019/04/13/5cb1913f97579.png
+">
+<meta property="og:image" content="
+https://i.loli.net/2019/04/13/5cb19c740bc8f.png
+">
+<meta property="og:image" content="
+https://i.loli.net/2019/04/13/5cb19c73c83b9.png
+">
+<meta property="og:updated_time" content="2019-04-15T09:12:16.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="embedding matrix-解决序列型数据问题的重要手段">
-<meta name="twitter:description" content="在学习deep learning的过程中，我注意到大多数教程是关于计算机视觉和自然语言处理方面的。确实这些是深度学习取得成功的主要领域，但是很多时候我们想要处理的数据并不是图片，音频或者文本这样的比较简明结构清晰的数据，结构数据(Structured Data)是在现实中更加常见的数据类型，比如说企业的销售数据，保险数据，商店经营数据等。在学习Fastai课程的过程中我了解了一个概念-Embedd">
+<meta name="twitter:title" content="基于fastai和Google App Engine的简单网页图片分类器">
+<meta name="twitter:description" content="学习Fastai的深度学习课程后自己找了些图片数据训练了一个卡比和胖丁的分类器，然后又鼓捣了一下Google App Engine，制作了一个简单的网页APP。 简述做的东西是一个基于网页的图片分类APP，分类对象是卡比和胖丁，下面左边是卡比，右边是胖丁…二者还是很相似的。    整个过程大致分为三步，收集图片，训练模型，部署APP，在这篇博文记录一下整个过程，也会介绍一部分原理。 图片收集先从G">
 <meta name="twitter:image" content="
-https://i.loli.net/2018/12/21/5c1c95601b050.png
+https://i.loli.net/2019/04/13/5cb1913f6f387.jpg
 ">
 
 
@@ -124,13 +132,13 @@ https://i.loli.net/2018/12/21/5c1c95601b050.png
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/29/embedding/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/13/KvJClassifier/">
 
 
 
 
 
-  <title>embedding matrix-解决序列型数据问题的重要手段 | Wangyi's Blogs</title>
+  <title>基于fastai和Google App Engine的简单网页图片分类器 | Wangyi's Blogs</title>
   
 
 
@@ -263,7 +271,7 @@ https://i.loli.net/2018/12/21/5c1c95601b050.png
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/29/embedding/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/13/KvJClassifier/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wangyi">
@@ -280,7 +288,7 @@ https://i.loli.net/2018/12/21/5c1c95601b050.png
 
         
         
-          <h1 class="post-title" itemprop="name headline">embedding matrix-解决序列型数据问题的重要手段</h1>
+          <h1 class="post-title" itemprop="name headline">基于fastai和Google App Engine的简单网页图片分类器</h1>
         
 
         <div class="post-meta">
@@ -292,8 +300,8 @@ https://i.loli.net/2018/12/21/5c1c95601b050.png
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-29T15:58:35+08:00">
-                2018-12-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-13T15:23:45+08:00">
+                2019-04-13
               </time>
             
 
@@ -352,12 +360,29 @@ https://i.loli.net/2018/12/21/5c1c95601b050.png
       
 
       
-        <p>在学习deep learning的过程中，我注意到大多数教程是关于计算机视觉和自然语言处理方面的。确实这些是深度学习取得成功的主要领域，但是很多时候我们想要处理的数据并不是图片，音频或者文本这样的比较简明结构清晰的数据，结构数据(Structured Data)是在现实中更加常见的数据类型，比如说企业的销售数据，保险数据，商店经营数据等。在学习Fastai课程的过程中我了解了一个概念-EmbeddingMatrix，可以很好的用来处理这类型的数据。<br>比如说在一个预测商品销售额的问题中，feature分成两种，一种叫做continuous data比如当天温度，和附近商店的距离等，这种类型的数据一般会当做浮点数处理；还有一种是categorical data，比如星期，月份。这种数据显然不适合像连续性数据一样当做浮点数处理，它们的值是可以穷举的，而且相邻的两个量，比如说周三，周四的销售额似乎没有什么数字上的联系。对于这种数据，我们可以设计一个Embedding Matrix来对这些量进行一个转换，然后把它们和其他连续型变量拼接在一起形成神经网络的Input data。</p>
+        <p>学习Fastai的深度学习课程后自己找了些图片数据训练了一个卡比和胖丁的分类器，然后又鼓捣了一下Google App Engine，制作了一个简单的网页APP。</p>
+<h2 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h2><p>做的东西是一个基于网页的图片分类APP，分类对象是卡比和胖丁，下面左边是卡比，右边是胖丁…二者还是很相似的。</p>
+<p><center class="half">  <img src="
+https://i.loli.net/2019/04/13/5cb1913f6f387.jpg
+" width="200"><img src="https://i.loli.net/2019/04/13/5cb1913f97579.png
+" width="200"> </center><br>整个过程大致分为三步，收集图片，训练模型，部署APP，在这篇博文记录一下整个过程，也会介绍一部分原理。</p>
+<h2 id="图片收集"><a href="#图片收集" class="headerlink" title="图片收集"></a>图片收集</h2><p>先从<a href="https://www.google.com/imghp?hl=EN" target="_blank" rel="noopener">Google Image</a>直接搜索kirby和jigglypuff后再ctrl+shift+J呼出控制台，然后输入两行代码</p>
+<pre><code>urls = Array.from(document.querySelectorAll(&apos;.rg_di .rg_meta&apos;)).map(el=&gt;JSON.parse(el.textContent).ou);
+window.open(&apos;data:text/csv;charset=utf-8,&apos; + escape(urls.join(&apos;\n&apos;)));
+</code></pre><p>   这样就会得到搜索到的图片的URL信息。接下来通过fastai library的download_images()函数来下载图片到本地。下载好图片后调用verify_images()函数来验证下载的图片是否破损。<br>   到此得到了训练分类器使用的数据，但是这样的数据会发现有很多错标的或者无关的图片，毕竟是直接Google而来，并不是标准数据集，所以需要做一些人工的数据清理工作。比如在卡比的图片里就有好多星之卡比中的boss帝帝帝大王，需要人工把这类图片删除掉。<br>   这样就得到了训练使用的数据集，再做一个Train/Valid的划分，最终训练集有284个样本，验证集有71个样本。</p>
+<pre><code>data.classes, data.c, len(data.train_ds), len(data.valid_ds)
+&gt;([&apos;jigglypuff&apos;, &apos;kirby&apos;], 2, 284, 71)
+</code></pre><h2 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h2><p>模型的训练是这个小项目中的核心部分，我借助了Fastiai库，使用了resnet34架构进行了迁移学习。即用在ImageNet上训练出的resnet34模型参数作为初始权重，首先freeze掉conv层做一次训练，然后unfreeze卷积层做finetune。在这一过程中，用到了之前博客里介绍过的learning rate finder来确定学习率。<br>模型finetune过程的每个epoch数据如下:</p>
 <p><center><br><img src="
-https://i.loli.net/2018/12/21/5c1c95601b050.png
-" width="500" height="600" align="center/"> </center></p>
-<p><center>     Embedding原理示意<br></center><br>比如说上图，我们为星期这一特征建立一个Embedding Matrix行数为七，对应一周可能的七个值。列数可以自己设置，列数越大那么模型容量就越大，一个建议的经验法则是设置为min((n+1)/2,50)，n为行数。<br>在这个EmbeddingMatrix中，每一行对应着我们<br>在输入向量中，continuous部分可以直接取其值（可能需要normalize）categorical部分则要先从EmbeddingMatrix中找出对应的行，把这行的权重与continuous部分的值拼接起来，然后作为完整的输入数据。比如说在图中的一组输入数据中，星期数为Monday，那么就从Embedding Matrix中Monday对应的一行抽取出来，Monday这里就替换成了四个可学习的参数，与其他输入数据拼接在一起送入神经网络去学习。在训练过程中，除了常规的神经网络中的参数以外，Embedding Matrix层的数据也会不断更新。<br>事实上，Embedding Matrix的行数往往会比可取值的数目多1，多的一行对应‘不存在’这一类别，因为实际上获取的真实数据不一定是所有信息都是完整的，对于缺失的数据，就都归为不存在这一栏。</p>
-<p>参考链接：<br>[1]Fastai course partI:<a href="https://course.fast.ai/lessons/lesson4.html" target="_blank" rel="noopener">https://course.fast.ai/lessons/lesson4.html</a></p>
+https://i.loli.net/2019/04/13/5cb19c740bc8f.png
+" align="center/"><br></center><br>模型最终在验证集上表现如下:</p>
+<p><center><br><img src="
+https://i.loli.net/2019/04/13/5cb19c73c83b9.png
+" align="center/"><br></center><br>借助迁移学习的力量，仅用17秒和两百多张图片就可以训练出准确率在99%左右的模型。</p>
+<h2 id="网页app部署"><a href="#网页app部署" class="headerlink" title="网页app部署"></a>网页app部署</h2><p>这部分参考了fastai production部分的教程，教程链接在文末列出，部署过程不多赘述，这里记录几个遇到的问题</p>
+<h3 id="问题1-TypeError-transform-got-multiple-values-for-argument-‘tfms’"><a href="#问题1-TypeError-transform-got-multiple-values-for-argument-‘tfms’" class="headerlink" title="问题1 TypeError: transform() got multiple values for argument ‘tfms’"></a>问题1 TypeError: transform() got multiple values for argument ‘tfms’</h3><p>研究一番后发现这问题的原因是版本不匹配，老版本中的tfms在后续版本更名为ds_tfms，修改app/server.py，将tfms改成ds_tfms即可</p>
+<h3 id="问题2-pickle-UnpicklingError-invalid-load-key-‘-x0a’"><a href="#问题2-pickle-UnpicklingError-invalid-load-key-‘-x0a’" class="headerlink" title="问题2 _pickle.UnpicklingError: invalid load key, ‘\x0a’."></a>问题2 _pickle.UnpicklingError: invalid load key, ‘\x0a’.</h3><p>从网上查到这一报错信息说明pickle加载了空文件，而导致这一问题的原因是原本应该下载到models/下的.pth文件（训练出的模型）没有被正确下载。于是手动下载model.pth文件，并放置到正确的目录下便解决了问题。</p>
+<p>参考资料:<br>[1] <a href="https://course.fast.ai/videos/?lesson=2" target="_blank" rel="noopener">fastai深度学习课程Lesson2</a><br>[2] <a href="https://course.fast.ai/deployment_google_app_engine.html" target="_blank" rel="noopener">Google App Engine部署教程</a></p>
 
       
     </div>
@@ -388,8 +413,8 @@ https://i.loli.net/2018/12/21/5c1c95601b050.png
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/30/differential-lr/" rel="next" title="differential learning rate annealing">
-                <i class="fa fa-chevron-left"></i> differential learning rate annealing
+              <a href="/2019/03/15/Play-touhou-project-on-Linux/" rel="next" title="在ubuntu18.04下借助wine玩东方project游戏">
+                <i class="fa fa-chevron-left"></i> 在ubuntu18.04下借助wine玩东方project游戏
               </a>
             
           </div>
@@ -397,10 +422,6 @@ https://i.loli.net/2018/12/21/5c1c95601b050.png
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/15/Play-touhou-project-on-Linux/" rel="prev" title="在ubuntu18.04下借助wine玩东方project游戏">
-                在ubuntu18.04下借助wine玩东方project游戏 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -452,8 +473,17 @@ https://i.loli.net/2018/12/21/5c1c95601b050.png
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -531,6 +561,22 @@ https://i.loli.net/2018/12/21/5c1c95601b050.png
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片收集"><span class="nav-number">2.</span> <span class="nav-text">图片收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型训练"><span class="nav-number">3.</span> <span class="nav-text">模型训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网页app部署"><span class="nav-number">4.</span> <span class="nav-text">网页app部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题1-TypeError-transform-got-multiple-values-for-argument-‘tfms’"><span class="nav-number">4.1.</span> <span class="nav-text">问题1 TypeError: transform() got multiple values for argument ‘tfms’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题2-pickle-UnpicklingError-invalid-load-key-‘-x0a’"><span class="nav-number">4.2.</span> <span class="nav-text">问题2 _pickle.UnpicklingError: invalid load key, ‘\x0a’.</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
